@@ -93,4 +93,4 @@ func (m *Manager) ListKeys() ([]string, error) {
 func (m *Manager) DeleteKey(name string) error {
 	filePath := filepath.Join(m.keystoreDir, fmt.Sprintf("%s.json", name))
 	return os.Remove(filePath)
-} 
+}
