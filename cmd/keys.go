@@ -15,7 +15,8 @@ var (
 	password    string
 )
 
-var keysCmd = &cobra.Command{
+// KeysCmd is the root command for key management
+var KeysCmd = &cobra.Command{
 	Use:   "keys",
 	Short: "Manage wallet keys",
 	Long:  `Generate, list, and manage wallet keys for signing transactions.`,
@@ -107,7 +108,7 @@ var deleteCmd = &cobra.Command{
 
 func init() {
 	// Add flags
-	keysCmd.PersistentFlags().StringVar(&keystoreDir, "keystore", ".keystore", "Keystore directory")
+	KeysCmd.PersistentFlags().StringVar(&keystoreDir, "keystore", ".keystore", "Keystore directory")
 	generateCmd.Flags().StringVar(&keyName, "name", "", "Key name")
 	generateCmd.Flags().StringVar(&password, "password", "", "Encryption password")
 	deleteCmd.Flags().StringVar(&keyName, "name", "", "Key name to delete")
@@ -118,7 +119,7 @@ func init() {
 	deleteCmd.MarkFlagRequired("name")
 
 	// Add commands
-	keysCmd.AddCommand(generateCmd)
-	keysCmd.AddCommand(listCmd)
-	keysCmd.AddCommand(deleteCmd)
+	KeysCmd.AddCommand(generateCmd)
+	KeysCmd.AddCommand(listCmd)
+	KeysCmd.AddCommand(deleteCmd)
 }
