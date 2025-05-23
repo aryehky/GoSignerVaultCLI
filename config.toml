@@ -1,0 +1,47 @@
+# GoSignerVaultCLI Configuration
+
+# Default keystore directory
+keystore_dir = ".keystore"
+
+# Chain configurations
+[chains]
+  [chains.ethereum]
+    name = "Ethereum Mainnet"
+    chain_id = 1
+    rpc_url = "https://mainnet.infura.io/v3/YOUR-PROJECT-ID"
+    symbol = "ETH"
+    explorer = "https://etherscan.io"
+    is_testnet = false
+
+  [chains.polygon]
+    name = "Polygon Mainnet"
+    chain_id = 137
+    rpc_url = "https://polygon-rpc.com"
+    symbol = "MATIC"
+    explorer = "https://polygonscan.com"
+    is_testnet = false
+
+  [chains.bsc]
+    name = "BNB Smart Chain"
+    chain_id = 56
+    rpc_url = "https://bsc-dataseed.binance.org"
+    symbol = "BNB"
+    explorer = "https://bscscan.com"
+    is_testnet = false
+
+  [chains.avalanche]
+    name = "Avalanche C-Chain"
+    chain_id = 43114
+    rpc_url = "https://api.avax.network/ext/bc/C/rpc"
+    symbol = "AVAX"
+    explorer = "https://snowtrace.io"
+    is_testnet = false
+
+# Security settings
+[security]
+  # Minimum password length for key encryption
+  min_password_length = 12
+  # Number of iterations for key derivation
+  kdf_iterations = 262144
+  # Encryption algorithm
+  encryption = "aes-256-gcm" 
