@@ -2,7 +2,6 @@ package core
 
 import (
 	"crypto/ecdsa"
-	"crypto/rand"
 	"encoding/hex"
 	"errors"
 	"fmt"
@@ -53,4 +52,4 @@ func (w *Wallet) GetPublicKeyHex() string {
 // GetAddress returns the Ethereum address as a hex string
 func (w *Wallet) GetAddress() string {
 	return w.Address.Hex()
-} 
+}
