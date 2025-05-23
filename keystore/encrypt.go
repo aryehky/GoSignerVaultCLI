@@ -72,9 +72,15 @@ func EncryptKey(privateKey []byte, password string) (*EncryptedKey, error) {
 	// Create MAC
 	mac := crypto.Keccak256(append(derivedKey[16:32], ciphertext...))
 
+	// Convert private key to ECDSA
+	ecdsaKey, err := crypto.ToECDSA(privateKey)
+	if err != nil {
+		return nil, fmt.Errorf("failed to convert private key: %v", err)
+	}
+
 	// Create the encrypted key structure
 	encryptedKey := &EncryptedKey{
-		Address: crypto.PubkeyToAddress(crypto.ToECDSA(privateKey).PublicKey).Hex(),
+		Address: crypto.PubkeyToAddress(ecdsaKey.PublicKey).Hex(),
 		Crypto: CryptoJSON{
 			Cipher:     "aes-256-gcm",
 			CipherText: fmt.Sprintf("0x%x", ciphertext),
